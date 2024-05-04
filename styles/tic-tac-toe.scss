@@ -1,0 +1,131 @@
+.game {
+  h1 {
+    display: flex;
+    justify-content: center;
+    background-color: #802180;
+    color: wheat;
+    width: 320px;
+    border-radius: 5px;
+    align-items: center;
+  }
+  .board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    .board-row {
+      display: flex;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      border-radius: 0;
+      border: none;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 50px;
+      font-weight: 700;
+      background-color: #b895b8;
+      outline: none;
+      margin-right: 10px;
+      &:hover {
+        color: inherit;
+      }
+    }
+    .cell-x {
+      background-color: gold;
+      color: #802180;
+      &:hover {
+        color: #c5aa11;
+      }
+    }
+    .cell-o {
+      color: gold;
+      &:hover {
+        color: #8d428d;
+      }
+    }
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .reset {
+      min-width: 200px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 20px;
+      width: 50px;
+      height: 50px;
+      font-size: x-large;
+      background-color: #802180;
+      color: #fef9fe;
+      &:hover {
+        background-color: #8d428d;
+        color: gold;
+      }
+    }
+  }
+  p {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: 500;
+  }
+  .result-popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .result-popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    max-width: 80%;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 20px rgba(99, 19, 103, 0.5);
+  }
+  .result-popup-content p {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .result-popup-content p.winner {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  .result-popup-content p.loser {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  .result-popup-content p.no-winner {
+    color: #f57c00;
+    font-weight: bold;
+  }
+  .close-button {
+    position: relative;
+    color: #aaa;
+    bottom: 10px;
+    left: 5px;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .result-popup-content span {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+  .close-button:hover {
+    color: #333;
+  }
+}
