@@ -1,5 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+}
 .game {
+  text-align: center;
+  margin-top: 50px;
   h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     background-color: #802180;
@@ -7,6 +17,7 @@
     width: 320px;
     border-radius: 5px;
     align-items: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
   .board {
     display: flex;
@@ -21,27 +32,30 @@
       width: 100px;
       height: 100px;
       border-radius: 0;
-      border: none;
+      border: 2px solid #b895b8;
       text-align: center;
       vertical-align: middle;
       font-size: 50px;
       font-weight: 700;
-      background-color: #b895b8;
+      background-color: #dcd0ff;
       outline: none;
+      cursor: pointer;
       margin-right: 10px;
-      &:hover {
-        color: inherit;
-      }
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .cell:hover {
+      background-color: #b895b8;
     }
     .cell-x {
       background-color: gold;
       color: #802180;
       &:hover {
-        color: #c5aa11;
+        color: #802180;
       }
     }
     .cell-o {
-      color: gold;
+      color: #8d428d;
       &:hover {
         color: #8d428d;
       }
@@ -51,6 +65,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 30px;
     .reset {
       min-width: 200px;
       border-radius: 5px;
@@ -62,8 +77,8 @@
       background-color: #802180;
       color: #fef9fe;
       &:hover {
-        background-color: #8d428d;
-        color: gold;
+        background-color: #a64ca6;
+        color: #fef9fe;
       }
     }
   }
@@ -89,7 +104,7 @@
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #888;
-    max-width: 80%;
+    max-width: 30%;
     width: 50%;
     text-align: center;
     position: relative;
