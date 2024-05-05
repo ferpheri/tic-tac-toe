@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { CiFaceMeh, CiFaceFrown, CiFaceSmile } from "react-icons/ci";
 type PopUpProps = {
   winner: string | null;
   isNoWinner: boolean;
@@ -23,11 +23,11 @@ const PopUp = ({ winner, isNoWinner, onClose }: PopUpProps) => {
 
   const getResultMessage = () => {
     if (winner === "X") {
-      return <p className="winner">You Win :)</p>;
+      return <p className="winner">You Win <CiFaceSmile/> </p>;
     } else if (isNoWinner) {
-      return <p className="no-winner">No One Wins :/</p>;
+      return <p className="no-winner">No One Wins <CiFaceMeh/></p>;
     } else if (winner === "O") {
-      return <p className="loser">AI Wins :(</p>;
+      return <p className="loser">AI Wins <CiFaceFrown/></p>;
     }
     return null;
   };
@@ -38,7 +38,7 @@ const PopUp = ({ winner, isNoWinner, onClose }: PopUpProps) => {
         <span className="close-button" onClick={onClose}>
           &times;
         </span>
-        <p>{getResultMessage()}</p>
+        {getResultMessage()}
       </div>
     </div>
   );

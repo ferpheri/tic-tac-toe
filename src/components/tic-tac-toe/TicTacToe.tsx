@@ -1,22 +1,8 @@
 import React, { useState } from "react";
 import Board from "./Board";
 import PopUp from "./PopUp";
-
+import GetCleverMoves from "./GetCleverMoves";
 type BoardArray = Array<Array<string | null>>;
-
-const makeComputerMove = (board: BoardArray): [number, number] => {
-  const emptyCells: [number, number][] = [];
-  board.forEach((row, rowIndex) => {
-    row.forEach((cell, cellIndex) => {
-      if (!cell) {
-        emptyCells.push([rowIndex, cellIndex]);
-      }
-    });
-  });
-
-  const randomIndex = Math.floor(Math.random() * emptyCells.length);
-  return emptyCells[randomIndex];
-};
 
 const checkWinner = (board: BoardArray): string | null => {
   const lines = [
@@ -82,19 +68,28 @@ const TicTacToe = () => {
     }
     //computer's move
     if (!newWinner) {
-      const [computerRow, computerCol] = makeComputerMove(updatedPlayerBoard);
-      const updatedComputerBoard = updatedPlayerBoard.map((newRow, rowIndex) =>
-        newRow.map((cell, cellIndex) =>
-          rowIndex === computerRow && cellIndex === computerCol ? "O" : cell
-        )
+      const nextPlayer = player === "X" ? "O" : "X";
+      const bestMove = GetCleverMoves(
+        updatedPlayerBoard,
+        nextPlayer,
+        checkWinner
       );
-      const newComputerWinner = checkWinner(updatedComputerBoard);
-      setWinner(newComputerWinner);
-      if (newComputerWinner) {
-        return;
-      }
+
+      // const newComputerWinner = checkWinner(updatedComputerBoard);
+      // setWinner(newComputerWinner);
+      // if (newComputerWinner) {
+      //   return;
+      // }
       setTimeout(() => {
-        setBoard(updatedComputerBoard);
+        const aiBoard = updatedPlayerBoard.map((r, rowIndex) =>
+          r.map((c, colIndex) =>
+            rowIndex === bestMove?.[0] && colIndex === bestMove[1]
+              ? nextPlayer
+              : c
+          )
+        );
+        setBoard(aiBoard);
+        setWinner(checkWinner(aiBoard))
       }, 500);
     }
   };
